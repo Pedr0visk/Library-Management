@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Author;
 use Illuminate\Http\Request;
 
-class AuthorController extends Controller
+class AuthorsController extends Controller
 {
+    public function create()
+    {
+        return view('auth.create');
+    }
+
     public function store()
     {
         Author::create($this->validateRequest());
@@ -14,7 +19,7 @@ class AuthorController extends Controller
 
     protected function validateRequest()
     {
-        request()->validate([
+        return request()->validate([
             'name' => 'required',
             'dob'  => 'required',
         ]);
